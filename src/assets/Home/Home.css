@@ -27,6 +27,8 @@
     font-weight: bold;
     width: 300px;
     height: 40px;
+}.inputContainer input::placeholder{
+    color: #fff;
 }
 .inputButton{
     width: 40px;
