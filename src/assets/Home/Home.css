@@ -42,3 +42,16 @@
     justify-content: center;
     cursor: pointer;
 }
+.cepInformations{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+    gap: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+.cepInformations .CEP{
+    font-size: 35px;
+}
