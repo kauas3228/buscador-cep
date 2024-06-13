@@ -1,15 +1,27 @@
 import { FaSearch } from "react-icons/fa";
 
 import './Home.css';
+import { useState } from "react";
 
 export default function Home() {
+  const [input, setInput] = useState<string>('');
+
+  const handleInputChange = (e: any) => {
+    const data = e.target.value;
+
+    setInput(data);
+    console.log(input)
+  }
+  
   return (
     <div className='container'>
       <h1 className='pageTitle'>Buscador de CEP</h1>
       <div className='inputContainer'>
         <input
           type='text'
-          placeholder='Digite seu CEP..'
+          placeholder='Digite seu CEP...'
+          value={input}
+          onChange={handleInputChange}
         />
         <button className='inputButton'><FaSearch /></button>
       </div>
