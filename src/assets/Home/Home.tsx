@@ -5,15 +5,31 @@ import { useState } from "react";
 import api from "../services/api";
 
 export default function Home() {
+  const [cep, setCep] = useState<any>({});
   const [input, setInput] = useState<string>('');
-
+  
   const handleInputChange = (e: any) => {
     const data = e.target.value;
 
     setInput(data);
-    console.log(input)
   }
   
+  const handleSearch = async () => {
+    if(input === ''){
+      alert('Informe um cep!')
+      return;
+    }
+
+    try{
+      const response = await api.get(`${input}/json`);
+
+      setInput('');
+      setCep(response.data);
+
+    }catch{
+      alert('Erro ao realizar busca');
+    }
+  }
   return (
     <div className='container'>
       <h1 className='pageTitle'>Buscador de CEP</h1>
@@ -24,14 +40,13 @@ export default function Home() {
           value={input}
           onChange={handleInputChange}
         />
-        <button className='inputButton'><FaSearch /></button>
+        <button className='inputButton' onClick={handleSearch}><FaSearch /></button>
       </div>
       <div className="cepInformations">
-        <span className="CEP">CEP: 01310-930</span>
-        <span className="informations">Avenida Paulista</span>
-        <span className="informations">Complemento: 2100</span>
-        <span className="informations">Bela Vista</span>
-        <span className="informations">Sao Paulo - SP</span>
+        <span className="CEP">CEP: {cep?.cep}</span>
+        <span className="informations">{cep?.logradouro}</span>
+        <span className="informations">{cep?.bairro}</span>
+        <span className="informations">{cep?.localidade} - {cep?.uf}</span>
       </div>
     </div>
   )
