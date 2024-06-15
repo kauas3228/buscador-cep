@@ -28,6 +28,7 @@ export default function Home() {
 
     }catch{
       alert('Erro ao realizar busca');
+      setInput('');
     }
   }
   return (
@@ -42,12 +43,17 @@ export default function Home() {
         />
         <button className='inputButton' onClick={handleSearch}><FaSearch /></button>
       </div>
-      <div className="cepInformations">
+
+      {Object.keys(cep).length > 0 && (
+        <div className="cepInformations">
         <span className="CEP">CEP: {cep?.cep}</span>
         <span className="informations">{cep?.logradouro}</span>
         <span className="informations">{cep?.bairro}</span>
+        <span className="informations">DDD: {cep?.ddd}</span>
         <span className="informations">{cep?.localidade} - {cep?.uf}</span>
       </div>
+      )}
+    
     </div>
   )
 }
