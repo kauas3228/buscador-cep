@@ -46,11 +46,11 @@ export default function Home() {
 
       {Object.keys(cep).length > 0 && (
         <div className="cepInformations">
-        <span className="CEP">CEP: {cep?.cep}</span>
-        <span className="informations">{cep?.logradouro}</span>
-        <span className="informations">{cep?.bairro}</span>
-        <span className="informations">DDD: {cep?.ddd}</span>
-        <span className="informations">{cep?.localidade} - {cep?.uf}</span>
+        <span className="CEP">CEP: {cep.cep}</span>
+        <span className="informations">{cep.logradouro}</span>
+        <span className="informations">{cep.bairro}</span>
+        <span className="informations">DDD: {cep.ddd}</span>
+        <span className="informations">{cep.localidade} - {cep.uf}</span>
       </div>
       )}
     
