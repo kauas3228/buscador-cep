@@ -2,6 +2,7 @@ import { FaSearch } from "react-icons/fa";
 
 import './Home.css';
 import { useState } from "react";
+import api from "../services/api";
 
 export default function Home() {
   const [input, setInput] = useState<string>('');
